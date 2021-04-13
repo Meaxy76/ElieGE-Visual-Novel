@@ -8,15 +8,37 @@ int main()
         sf::RenderWindow window(sf::VideoMode(1024, 768), "ElieGE Visual Novel ");
         
         sf::Image image;
-        if (!(image.loadFromFile("characters/kaori2.JPG")))
+        if (!(image.loadFromFile("scenes/background/backtest.png")))
                 std::cout << "Cannot load image";   //Load Image
         
         sf::Texture texture;
         texture.loadFromImage(image);  //Load Texture from image
 
         sf::Sprite sprite;
-        sprite.setTexture(texture);    
+        sprite.setTexture(texture);  
 
+        sf::Image image1;
+        if (!(image1.loadFromFile("characters/Aiko/aiko1.png")))
+                std::cout << "Cannot load image";   //Load Image
+        
+        sf::Texture texture1;
+        texture1.loadFromImage(image1);  //Load Texture from image
+
+        sf::Sprite sprite1;
+        sprite1.setTexture(texture1);      
+        sprite1.setPosition(100,45);
+
+        sf::Image image2;
+        if (!(image2.loadFromFile("characters/Kaori/kaori.png")))
+                std::cout << "Cannot load image";   //Load Image
+        
+        sf::Texture texture2;
+        texture2.loadFromImage(image2);  //Load Texture from image
+
+        sf::Sprite sprite2;
+        sprite2.setTexture(texture2);
+        sprite2.setPosition(-200,45);
+ 
 
         while (window.isOpen())
         {
@@ -39,6 +61,8 @@ int main()
 
                 window.clear();
                 window.draw(sprite);
+                window.draw(sprite1);
+                window.draw(sprite2);
                 window.display();
                 }
 
