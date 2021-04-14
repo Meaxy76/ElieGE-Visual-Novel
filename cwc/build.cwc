@@ -1,0 +1,43 @@
+>
+-{pObj_WB}:=obj/cpp_{_sPlatform}_{_sOpt}/
+>
+-{pOut_WB}:=_out/{_sPlatform}_{_sOpt}/
+>
+-#Run "../cwc/sfml/Build_SFML.cwc"
+>
+-{vFlag}=
+-DUNICODE
+-DSFML_STATIC
+>
+-{pSrc}=../src/
+-{pMedia}=../characters/
+-{pData}=../scenes/
+>
+-{vIncl}=
+-I ../ 
+-I {pSFML}include/
+-I {pSrc}
+>
+-c {pSrc} -o {pObj_WB}ElieGEVN/
+-{vIncl}
+-{vFlag}
+>
+-#Copy {pMedia} {pOut_WB}characters/
+-#Copy {pData}  {pOut_WB}scenes
+>
+;Generate executable
+-o {pObj_WB} -#To {pOut_WB}/ElieTest.*
+-L {pSFML_extlibs}libs-mingw/x86//
+-lFLAC
+-lfreetype
+-lopenal32
+-lvorbisfile
+-lvorbisenc
+-lvorbis
+-logg
+-lws2_32
+-lopengl32
+-lgdi32
+-lwinmm
+>
+-#Run
