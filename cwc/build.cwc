@@ -8,10 +8,13 @@
 -{vFlag}=
 -DUNICODE
 -DSFML_STATIC
+-fpermissive
 >
 -{pSrc}=../src/
--{pMedia}=../characters/
--{pData}=../scenes/
+-{pEGE}=../src/engine/
+-{pPerso}=../characters/
+-{pScene}=../scenes/
+-{pSound}=../sound/
 >
 -{vIncl}=
 -I ../ 
@@ -22,8 +25,9 @@
 -{vIncl}
 -{vFlag}
 >
--#Copy {pMedia} {pOut_WB}characters/
--#Copy {pData}  {pOut_WB}scenes
+-#Copy {pPerso} {pOut_WB}characters/
+-#Copy {pScene}  {pOut_WB}scenes/
+-#Copy {pSound}  {pOut_WB}sound/
 >
 ;Generate executable
 -o {pObj_WB} -#To {pOut_WB}/ElieTest.*
