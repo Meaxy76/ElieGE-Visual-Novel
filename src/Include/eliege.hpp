@@ -2,12 +2,19 @@
 
 
 
-#pragma once
+// #pragma once
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include "include/debug.h"
+#include "include/tar.h"
 
-class ElieEngine 
-{
+#define ELIEGE_VERSION 0.1
+#define ELIEGE_CODE_NAME Viusal Novel
 
-};
+// class ElieEngine 
+// {
+
+   // DEBUG->Log("Init Elie Game Engine");
+
+// };

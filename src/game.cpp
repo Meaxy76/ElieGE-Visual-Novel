@@ -1,138 +1,111 @@
+//
+//  game.cpp
+//  ElieGE Visual Novel
+//
+//  Created by Meaxy Kusama on 21-04-19.
+//  Copyright © 2021 Meaxy Kusama. All rights reserved.
+//
+
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-#include "include/debug.h"
+
+//#include "ResourcePath.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
-
 void game()
-{    
-
-        DEBUG->Log(" Init Window");
+{
+    
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel",sf::Style::Fullscreen);    // Load a sprite to display
+    sf::Texture texture;
+    if (!texture.loadFromFile("scenes/background/stars.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite(texture);
+    
+    
+    sf::Texture texture1;
+    if (!texture1.loadFromFile("scenes/menu/test1.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite1(texture1);
+    
+    sf::Texture texture2;
+    if (!texture2.loadFromFile("scenes/logo/test.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite2(texture2);
+    
+    sf::Texture texture3;
+    if (!texture3.loadFromFile("characters/Aiko/aiko1.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite3(texture3);
+    sprite3.setPosition(400,367);
+    
+    sf::Texture texture4;
+    if (!texture4.loadFromFile("characters/Kaori/kaori.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite4(texture4);
+    sprite4.setPosition(150,367);
+    
+    sf::Texture texture5;
+    if (!texture5.loadFromFile("characters/Mikie/mikie.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite5(texture5);
+    sprite5.setPosition(1270,630);
+    
+    
+    sf::Texture texture6;
+    if (!texture6.loadFromFile("characters/Mitsuki/mitsuki.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite6(texture6);
+    sprite6.setPosition(900,450);
+    
+    sf::Font font;
+    if (!font.loadFromFile("font/weigl.ttf")) {
+        return EXIT_FAILURE;
+    }
+    sf::Text text("Minasan, ohayo!", font, 25);
+    text.setFillColor(sf::Color::Black);
+    text.setPosition(190,450);
+    
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sound/happy.wav"))
+        return -1;
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.play();
+    
+    while (window.isOpen())
+    {
         
-        sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel ",sf::Style::Fullscreen);
-        sf::Vector2u size = window.getSize();
-         unsigned int width = size.x;
-         unsigned int height = size.y;
-        // Load background
-        DEBUG->Log(" Load background");
-        sf::Image image;
-        if (!(image.loadFromFile("scenes/background/backtest.png")))
-                        DEBUG->Log(" Cannot load picture");   
         
-        sf::Texture texture;
-        texture.loadFromImage(image);  //Load Texture from image
-
-        sf::Sprite sprite;
-        sprite.setTexture(texture);  
-
-        // load Aiko 
-
-        sf::Image image1;
-        if (!(image1.loadFromFile("characters/Aiko/aiko1.png")))
-                        DEBUG->Log(" Cannot load picture");  
+        sf::Event event;
         
-        sf::Texture texture1;
-        texture1.loadFromImage(image1);  //Load Texture from image
-
-        sf::Sprite sprite1;
-        sprite1.setTexture(texture1);      
-        sprite1.setPosition(100,367);
-
-        // Load Kaori
-
-        sf::Image image2;
-        if (!(image2.loadFromFile("characters/Kaori/kaori.png")))
-                        DEBUG->Log(" Cannot load picture");  
-        
-        sf::Texture texture2;
-        texture2.loadFromImage(image2);  //Load Texture from image
-
-        sf::Sprite sprite2;
-        sprite2.setTexture(texture2);
-        sprite2.setPosition(-200,367);
-
-        // Load Mikie
-
-                sf::Image image3;
-        if (!(image3.loadFromFile("characters/Mikie/mikie.png")))
-                        DEBUG->Log(" Cannot load picture");  
-        
-        sf::Texture texture3;
-        texture3.loadFromImage(image3);  //Load Texture from image
-
-        sf::Sprite sprite3;
-        sprite3.setTexture(texture3);
-        sprite3.setPosition(1020,630);
-
-        // Load Elie
-
-        //        sf::Image image5;
-        // if (!(image5.loadFromFile("characters/Elie/moe.png")))
-        //                DEBUG->Log(" Cannot load picture");  
-        
-        // sf::Texture texture5;
-        // texture5.loadFromImage(image5);  //Load Texture from image
-
-        // sf::Sprite sprite5;
-        // sprite5.setTexture(texture5);
-        // sprite5.setPosition(700,300);
-
-        // Load Mitsuki
-
-                sf::Image image4;
-        if (!(image4.loadFromFile("characters/Mitsuki/mitsuki.png")))
-                        DEBUG->Log(" Cannot load picture");  
-        
-        sf::Texture texture4;
-        texture4.loadFromImage(image4);  //Load Texture from image
-
-        sf::Sprite sprite4;
-        sprite4.setTexture(texture4);
-        sprite4.setPosition(600,450);
-
-        // Load music
-                 
-
-        sf::SoundBuffer buffer;
-         if (!buffer.loadFromFile("sound/test1.wav"))
-                return -1;
-        sf::Sound sound;
-        sound.setBuffer(buffer);
-        sound.play();
-
-        while (window.isOpen())
+        while (window.pollEvent(event))
         {
-
-       
-                sf::Event event;
-                
-                while (window.pollEvent(event))
-                {
-                        if (event.type == sf::Event::Closed)
-                                window.close();
-                        
-                        }//Event handling done
-                        
-
-                for (int i = 0; i < 1024; i++)
-                {
-                        for (int j = 0; j < 768; j++)
-                                image.setPixel(i, j, sf::Color::Black);
-                }
-
-                window.clear();
-                window.draw(sprite);
-               // window.draw(sprite5); 
-                window.draw(sprite3); 
-                window.draw(sprite1);
-                window.draw(sprite4); 
-                window.draw(sprite2); 
-                
-                window.display();
-                }
-
+            if (event.type == sf::Event::Closed)
+                window.close();
+            
+        }//Event handling done
+        
+        
+        window.clear();
+        window.draw(sprite);  // Background
+        window.draw(sprite1); // Menu bar
+        window.draw(sprite2); // Logo
+        window.draw(sprite3); // Aiko
+        window.draw(sprite4); // Kaori
+        window.draw(sprite5); // Mikie
+        window.draw(sprite6); // Mitsuki (Devse-chan)
+        window.draw(text); // Custom text
+        window.display();
+    }
+    
 }
