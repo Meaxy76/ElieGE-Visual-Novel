@@ -15,6 +15,7 @@
 -{pPerso}=../characters/
 -{pScene}=../scenes/
 -{pSound}=../sound/
+-{pFont}=../font/
 >
 -{vIncl}=
 -I ../ 
@@ -28,6 +29,7 @@
 -#Copy {pPerso} {pOut_WB}characters/
 -#Copy {pScene}  {pOut_WB}scenes/
 -#Copy {pSound}  {pOut_WB}sound/
+-#Copy {pFont}  {pOut_WB}font/
 >
 ;Generate executable
 -o {pObj_WB} -#To {pOut_WB}/ElieTest.*
