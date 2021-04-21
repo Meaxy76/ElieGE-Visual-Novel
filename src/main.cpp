@@ -8,7 +8,7 @@
 // #include <sstream>
 // #include <string>
 
-void game();
+int game();
 
 
 int main()

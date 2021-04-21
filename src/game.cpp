@@ -15,7 +15,7 @@
 #include <sstream>
 #include <string>
 
-void game()
+int game()
 {
     
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel",sf::Style::Fullscreen);    // Load a sprite to display
@@ -107,5 +107,5 @@ void game()
         window.draw(text); // Custom text
         window.display();
     }
-    
+    return 0;
 }
