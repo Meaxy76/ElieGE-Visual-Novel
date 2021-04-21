@@ -1,7 +1,10 @@
 // #include <SFML/Graphics.hpp>
 // #include <SFML/Window.hpp>
 // #include <SFML/Audio.hpp>
+#ifdef _WIN32
 #include "include/debug.h"
+#endif
+
 //#include "include/eliege.hpp"
 // #include <iostream>
 // #include <fstream>
