@@ -27,6 +27,8 @@
 // #include "include/debug_unix.h"
 #endif
 
+#include "Include/button.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -92,6 +94,9 @@ int game()
     sf::Text text("Minasan, ohayo!", font, 25);
     text.setFillColor(sf::Color::Black);
     text.setPosition(190,450);
+
+    //Button("characters/Mitsuki/mitsuki.png", "characters/Mitsuki/mitsuki.png"); I'm lost here x( 
+   
     
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile("sound/happy.wav"))
