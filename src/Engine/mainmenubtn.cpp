@@ -8,7 +8,7 @@ using namespace std;
 
 void MenuButtonLOL::init()
 {
-	configButton = new Button(SOURCES->AssetRoot + "et.png", "", "", 0, 0);
+	configButton = new Button(SOURCES->AssetRoot + "icon/icon.png", "", "", 0, 0);
     DEBUG->Log("BOUTON CHARGER");  
 	configButton->load();
     
@@ -40,7 +40,8 @@ void MenuButtonLOL::render(sf::RenderWindow* window)
 	{
 		window->draw(*button);
         
-        DEBUG->Log("BOUTON CREER");  
+        DEBUG->Log("BOUTON CREER"); 
+     
 	}
 }
 

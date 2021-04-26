@@ -46,7 +46,7 @@ int game()
       
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel",sf::Style::Fullscreen);    // Load a sprite to display
     sf::Texture texture;
-    if (!texture.loadFromFile("scenes/background/stars.png")) {
+    if (!texture.loadFromFile(SOURCES->AssetRoot + "scenes/background/stars.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite(texture);
@@ -59,27 +59,27 @@ int game()
     sf::Sprite sprite1(texture1);
     
     sf::Texture texture2;
-    if (!texture2.loadFromFile("scenes/logo/test.png")) {
+    if (!texture2.loadFromFile(SOURCES->AssetRoot + "scenes/logo/test.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite2(texture2);
     
     sf::Texture texture3;
-    if (!texture3.loadFromFile("characters/Aiko/aiko1.png")) {
+    if (!texture3.loadFromFile(SOURCES->AssetRoot + "characters/Aiko/aiko1.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite3(texture3);
     sprite3.setPosition(400,367);
     
     sf::Texture texture4;
-    if (!texture4.loadFromFile("characters/Kaori/kaori.png")) {
+    if (!texture4.loadFromFile(SOURCES->AssetRoot + "characters/Kaori/kaori.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite4(texture4);
     sprite4.setPosition(150,367);
     
     sf::Texture texture5;
-    if (!texture5.loadFromFile("characters/Mikie/mikie.png")) {
+    if (!texture5.loadFromFile(SOURCES->AssetRoot + "characters/Mikie/mikie.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite5(texture5);
@@ -87,14 +87,14 @@ int game()
     
     
     sf::Texture texture6;
-    if (!texture6.loadFromFile("characters/Mitsuki/mitsuki.png")) {
+    if (!texture6.loadFromFile(SOURCES->AssetRoot + "characters/Mitsuki/mitsuki.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite6(texture6);
     sprite6.setPosition(900,450);
     
     sf::Font font;
-    if (!font.loadFromFile("font/weigl.ttf")) {
+    if (!font.loadFromFile(SOURCES->AssetRoot + "font/weigl.ttf")) {
         DEBUG->Log("OH NO");  
     }
     sf::Text text("Minasan, ohayo!", font, 75);
@@ -104,7 +104,7 @@ int game()
         //menubuttonlol.init();
 
     sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("sound/happy.wav"))
+    if (!buffer.loadFromFile(SOURCES->AssetRoot + "sound/happy.wav"))
         return -1;
     sf::Sound sound;
     sound.setBuffer(buffer);
@@ -137,6 +137,7 @@ int game()
         window.draw(sprite5); // Mikie
         window.draw(sprite6); // Mitsuki (Devse-chan)
         window.draw(text); // Custom text
+        //menubuttonlol.update(*float delta_t);
         menubuttonlol.render(&window); // Try to render de button
         window.display();
     }

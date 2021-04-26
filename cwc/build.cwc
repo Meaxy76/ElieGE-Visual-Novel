@@ -12,10 +12,7 @@
 >
 -{pSrc}=../src/
 -{pEGE}=../src/engine/
--{pPerso}=../characters/
--{pScene}=../scenes/
--{pSound}=../sound/
--{pFont}=../font/
+-{pContent}=../Content/
 >
 -{vIncl}=
 -I ../ 
@@ -26,10 +23,7 @@
 -{vIncl}
 -{vFlag}
 >
--#Copy {pPerso} {pOut_WB}characters/
--#Copy {pScene}  {pOut_WB}scenes/
--#Copy {pSound}  {pOut_WB}sound/
--#Copy {pFont}  {pOut_WB}font/
+-#Copy {pContent} {pOut_WB}Content/
 >
 ;Generate executable
 -o {pObj_WB} -#To {pOut_WB}/ElieTest.*

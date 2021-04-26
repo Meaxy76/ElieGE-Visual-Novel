@@ -5,6 +5,8 @@
 #include "include/debug.h"
 #endif
 
+#include <stdio.h>
+
 //#include "include/eliege.hpp"
 // #include <iostream>
 // #include <fstream>
@@ -16,6 +18,8 @@ int game();
 
 int main()
 {    
+        setvbuf(stdout, NULL, _IONBF, 0);
+        setvbuf(stderr, NULL, _IONBF, 0);
         DEBUG->Log("Begin the game");  
         game();
 
