@@ -5,7 +5,6 @@
 #include <string>
 
 
-
 class Button : public EEffect
 {
 public:
@@ -44,6 +43,7 @@ protected:
 	bool pressed;	// if the button is currently being pressed
 	bool clicked;	// if the button is being clicked (fully pressed then released)
 	bool hovered;	// if the button is hovered
+	
 
 	bool onLoad();
 	void onUpdate(float delta_t);

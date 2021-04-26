@@ -28,14 +28,20 @@
 #endif
 
 #include "Include/button.hpp"
+#include "Include/mainmenubtn.hpp"
+#include "Include/sources.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
+
 int game()
 {
+
+    
+    
     
       
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel",sf::Style::Fullscreen);    // Load a sprite to display
@@ -47,7 +53,7 @@ int game()
     
       DEBUG->Log("Begin the gamedigiudhkd");     
     sf::Texture texture1;
-    if (!texture1.loadFromFile("scenes/menu/test1.png")) {
+    if (!texture1.loadFromFile(SOURCES->AssetRoot + "scenes/menu/test1.png")) {
         DEBUG->Log("OH NO");  
     }
     sf::Sprite sprite1(texture1);
@@ -91,19 +97,22 @@ int game()
     if (!font.loadFromFile("font/weigl.ttf")) {
         DEBUG->Log("OH NO");  
     }
-    sf::Text text("Minasan, ohayo!", font, 25);
+    sf::Text text("Minasan, ohayo!", font, 75);
     text.setFillColor(sf::Color::Black);
     text.setPosition(190,450);
-
-    //Button("characters/Mitsuki/mitsuki.png", "characters/Mitsuki/mitsuki.png"); I'm lost here x( 
-   
     
+        //menubuttonlol.init();
+
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile("sound/happy.wav"))
         return -1;
     sf::Sound sound;
     sound.setBuffer(buffer);
     sound.play();
+
+
+    MenuButtonLOL menubuttonlol;
+
     
     while (window.isOpen())
     {
@@ -116,7 +125,7 @@ int game()
             if (event.type == sf::Event::Closed)
                 window.close();
             
-        }//Event handling done
+        }
         
         
         window.clear();
@@ -128,6 +137,7 @@ int game()
         window.draw(sprite5); // Mikie
         window.draw(sprite6); // Mitsuki (Devse-chan)
         window.draw(text); // Custom text
+        menubuttonlol.render(window); // Try to render de button
         window.display();
     }
     return 0;
