@@ -113,7 +113,7 @@ int game()
 
     MenuButtonLOL menubuttonlol;
 
-    
+
     while (window.isOpen())
     {
         
@@ -137,7 +137,7 @@ int game()
         window.draw(sprite5); // Mikie
         window.draw(sprite6); // Mitsuki (Devse-chan)
         window.draw(text); // Custom text
-        menubuttonlol.render(window); // Try to render de button
+        menubuttonlol.render(&window); // Try to render de button
         window.display();
     }
     return 0;

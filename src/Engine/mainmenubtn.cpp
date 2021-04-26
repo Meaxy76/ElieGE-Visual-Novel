@@ -1,6 +1,7 @@
 //#include "Include/sources.hpp"
 //#include "Include/button.hpp"
 #include "Include/mainmenubtn.hpp"
+#include <SFML/graphics.hpp>
 //#include "include/debug.h"
 using namespace std;
 
@@ -33,11 +34,11 @@ void MenuButtonLOL::cleanup()
 }
 
 
-void MenuButtonLOL::render(sf::RenderWindow & window)
+void MenuButtonLOL::render(sf::RenderWindow* window)
 {
 	for (Button* button : buttons)
 	{
-		window.draw(*button);
+		window->draw(*button);
         
         DEBUG->Log("BOUTON CREER");  
 	}

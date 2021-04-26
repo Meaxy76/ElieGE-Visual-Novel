@@ -9,7 +9,7 @@ class MenuButtonLOL
 public:
 
      void handleInput(sf::Event& e, sf::RenderWindow& window);
-     void render(sf::RenderWindow& window);
+     void render(sf::RenderWindow* window);
      void update(float delta_t);	
      void init();
 	 void cleanup();
