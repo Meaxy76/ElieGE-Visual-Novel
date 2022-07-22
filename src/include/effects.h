@@ -1,0 +1,1 @@
+// effect of fade in and out for characters etc

@@ -1,145 +1,72 @@
-//
-//  game.cpp
-//  ElieGE Visual Novel
-//
-//  Created by Meaxy Kusama on 21-04-19.
-//  Copyright © 2021 Meaxy Kusama. All rights reserved.
-//
-//  _____ _ _       ____ _____ 
-// | ____| (_) ___ / ___| ____|
-// |  _| | | |/ _ \ |  _|  _|  
-// | |___| | |  __/ |_| | |___ 
-// |_____|_|_|\___|\____|_____|
-//
-//
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-// Resource path is used in MacOSx
 #ifdef __APPLE__
-// Need MacOS folder teehee I forgot (Code different)
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "ResourcePath.hpp"
-#elif _WIN32
-// Debug for Windows
 #include "include/debug.h"
+#elif _WIN32
+#include "Include/SDL.h"
+#include "Include/SDL_image.h"
+//#include "include/debug.h"
 #elif __linux__
-// Debug for GNU/Linux
-// #include "include/debug_unix.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include "include/debug.h"
 #endif
+#include "include/SDL_Base.h"
+#include "include/Mouse.h"
+SDL_Window * window = NULL;
+SDL_Renderer* renderer = NULL;
 
-#include "Include/button.hpp"
-#include "Include/mainmenubtn.hpp"
-#include "Include/sources.hpp"
-
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-
-
+  SDL_Texture* MouseTexture = NULL;
+  
+  SDL_Rect MouseRect;
+  SDL_Rect MousePoint;
 int game()
 {
+    Mouse mouse;
+    mouse.MouseMain();
+    SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+    window = SDL_CreateWindow("Heroes of the Aura",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,1366,768,SDL_WINDOW_OPENGL);
+    IMG_Init(IMG_INIT_PNG);
 
-    
-    
-    
-      
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "ElieGE Visual Novel",sf::Style::Fullscreen);    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(SOURCES->AssetRoot + "scenes/background/stars.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite(texture);
-    
-      DEBUG->Log("Begin the gamedigiudhkd");     
-    sf::Texture texture1;
-    if (!texture1.loadFromFile(SOURCES->AssetRoot + "scenes/menu/test1.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite1(texture1);
-    
-    sf::Texture texture2;
-    if (!texture2.loadFromFile(SOURCES->AssetRoot + "scenes/logo/test.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite2(texture2);
-    
-    sf::Texture texture3;
-    if (!texture3.loadFromFile(SOURCES->AssetRoot + "characters/Aiko/aiko1.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite3(texture3);
-    sprite3.setPosition(400,367);
-    
-    sf::Texture texture4;
-    if (!texture4.loadFromFile(SOURCES->AssetRoot + "characters/Kaori/kaori.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite4(texture4);
-    sprite4.setPosition(150,367);
-    
-    sf::Texture texture5;
-    if (!texture5.loadFromFile(SOURCES->AssetRoot + "characters/Mikie/mikie.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite5(texture5);
-    sprite5.setPosition(1270,630);
-    
-    
-    sf::Texture texture6;
-    if (!texture6.loadFromFile(SOURCES->AssetRoot + "characters/Mitsuki/mitsuki.png")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Sprite sprite6(texture6);
-    sprite6.setPosition(900,450);
-    
-    sf::Font font;
-    if (!font.loadFromFile(SOURCES->AssetRoot + "font/weigl.ttf")) {
-        DEBUG->Log("OH NO");  
-    }
-    sf::Text text("Minasan, ohayo!", font, 75);
-    text.setFillColor(sf::Color::Black);
-    text.setPosition(190,450);
-    
-        //menubuttonlol.init();
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+        SDL_Renderer* SDL_GetRenderer(SDL_Window* window);
+        SDL_RenderPresent(renderer);
 
-    sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile(SOURCES->AssetRoot + "sound/happy.wav"))
-        return -1;
-    sf::Sound sound;
-    sound.setBuffer(buffer);
-    sound.play();
+    bool running = true;
+    double delta = .0001;
+    double TimeClock = SDL_GetTicks();
 
+    while (running){
+        mouse.MouseUpdate();
+        delta = (SDL_GetTicks() - TimeClock)/1000;
+        TimeClock = SDL_GetTicks();
 
-    MenuButtonLOL menubuttonlol;
+        SDL_Event event;
 
+        while(SDL_PollEvent(&event)){
+            switch(event.type){
+                case SDL_QUIT:
+                    running = false;
+                    break;
+            }// end switch
+        }// end loop
 
-    while (window.isOpen())
-    {
-        
-        
-        sf::Event event;
-        
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            
+        auto KeyB = SDL_GetKeyboardState(0);
+
+        if(KeyB[SDL_SCANCODE_ESCAPE]){
+            running = false;
         }
-        
-        
-        window.clear();
-        window.draw(sprite);  // Background
-        window.draw(sprite1); // Menu bar
-        window.draw(sprite2); // Logo
-        window.draw(sprite3); // Aiko
-        window.draw(sprite4); // Kaori
-        window.draw(sprite5); // Mikie
-        window.draw(sprite6); // Mitsuki (Devse-chan)
-        window.draw(text); // Custom text
-        //menubuttonlol.update(*float delta_t);
-        menubuttonlol.render(&window); // Try to render de button
-        window.display();
+
+        //mouse.Mouse();
+        mouse.MouseDraw();
+        SDL_Texture* character = IMG_LoadTexture(renderer, "back.png");
+        SDL_RenderCopy(renderer, character, NULL,NULL);
+        SDL_RenderPresent(renderer);
+
     }
+
+    SDL_Quit();
     return 0;
 }

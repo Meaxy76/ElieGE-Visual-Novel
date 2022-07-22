@@ -1,0 +1,32 @@
+;Register Cwc before using a .cwmake
+>
+-{_sOpt}="Debug"
+>
+-{_wToolchain}= VLianceTool/LibRT
+>
+-{vLink_Lib}=-L ../SDL2/lib/x86/
+>
+-{pOut}=_out/{_sPlatform}_{_sOpt}/
+-{pObj}= obj/{_sPlatform}_{_sOpt}/
+>
+-c ../src/ -o {pObj}src/
+-I ../SDL2/
+>
+-o  {pObj}src/ -#To {pOut}test.exe
+-{vLink_Lib}
+-lSDL2main
+-lSDL2
+-lSDL2_image
+-lSDL2_ttf
+;-lSDL2_opengl
+-mwindows
+-mconsole
+;-lSDL2.dll
+;-lSDL2_image.dll
+>
+;-#Copy {pLib}CpcDos.dll {pOut}CpcDos.dll
+;-#Copy opengl32.dll {pOut}opengl32.dll
+;-#Copy {pContent} {pOut}files/
+>
+-#Run
+>

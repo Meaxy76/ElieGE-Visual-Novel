@@ -5,7 +5,6 @@
 #include <cstdarg>
 #include <sstream>
 #include <string>
-#include <SFML/Graphics.hpp>
 using namespace std;
 #define DEBUG ElieDebug::GetDebug()
 /**

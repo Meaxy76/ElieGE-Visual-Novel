@@ -1,7 +1,7 @@
 
-#include "include/debug.h"
-#include "include/debug.h"
-#include "include/Utilities.h"
+#include "../include/debug.h"
+#include "../include/debug.h"
+#include "../include/utilities.h"
 
 const string ElieDebug::m_sFileName = "debug.log";
 ElieDebug* ElieDebug::m_pThis = NULL;
