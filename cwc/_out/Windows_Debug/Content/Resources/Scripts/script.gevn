@@ -1,0 +1,22 @@
+[background] mouth.png
+[track] Chasing.wav
+[character] Mysterious Women
+[text] Don't worry..
+[character] Man
+[text] Who are you?
+[character] Mysterious Women
+[text] I won't let you go again
+[text] I will protect you Ichiro
+[character] Ichiro
+[text] Wait!
+[background] hospital.jpg
+[character] Elie
+[actor] Elie2.png
+[text] Ichiro! You are awake!
+[character] Ichiro
+[text] Where am I?
+[character] Elie
+[text] At the hospital
+[character]  
+[text] Suddenly my phone ring
+[phone] {call} (Private) tigger (2) {1} text I answered my phone {2} text I didnt answered

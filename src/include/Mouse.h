@@ -22,13 +22,13 @@ public:
   SDL_Texture* MouseTexture;
 
   void MouseMain() {
-    MouseTexture = IMG_LoadTexture(renderer, "CURSOR.png");
+    //MouseTexture = IMG_LoadTexture(renderer, "CURSOR.png");
     // 13x21
-    MouseRect.h = 13;
-    MouseRect.w = 21;
+    MouseRect.h = 21;
+    MouseRect.w = 13;
     MousePoint.h = 1;
     MousePoint.w = 1;
-    SDL_ShowCursor(false);
+    //SDL_ShowCursor(false);
   }
 
   void MouseUpdate() {
@@ -38,7 +38,7 @@ public:
   }
 
   void MouseDraw() {
-    SDL_RenderCopy(renderer, MouseTexture, NULL, &MouseRect);
+    //SDL_RenderCopy(renderer, MouseTexture, NULL, &MouseRect);
   }
 
 };

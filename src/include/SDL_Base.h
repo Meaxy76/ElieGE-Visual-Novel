@@ -11,3 +11,6 @@
 extern SDL_Renderer* renderer;
 extern SDL_Rect rectangle;
 extern SDL_Texture * texture;
+extern SDL_Event event;
+extern SDL_Texture * SceneBackground;
+void update(SDL_Renderer* renderer);
